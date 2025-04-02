@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Login</title>
+	</head>
+	<body>
+    <!--This line of code tells the templating engine (Jinja) to use "base.html" as the template for this page.-->
+    {% extends 'bootstrap/base.html' %}
+    {% import "bootstrap/wtf.html" as wtf %}
+    <!--This block inserts a custom title into the header of the template.-->
+    {% block title %}Login{% endblock %}
+    <!--This block provides the content of the website. The part that is going to vary between webpages.-->
+    {% block content %}
+    <div class="container">
+            <h1>Login</h1>
+            {{ wtf.quick_form(form) }}
+        </div>
+    {% endblock %}
+	</body>
+</html>
