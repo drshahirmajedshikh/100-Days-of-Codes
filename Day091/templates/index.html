@@ -1,0 +1,68 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+{% endblock %}
+
+{% block title %}Color Extractor{% endblock %}
+
+{% block content %}
+
+<section id="demo" class="docs section">
+        <div class="container">
+            <div class="docs-inner">
+                <h2 class="title">Color Distribution</h2>
+                <div class="block">
+
+    <img src="/static/img/{{photo}}" width="80%" class="center" alt="test image">
+
+	<table class="table">
+        <thead>
+		<tr><th>   </th><th>Color</th><th></th><th>RGB Code</th><th>Hex Code</th><th>Percentage</th></tr>
+        </thead>
+        <tbody>
+			{% for color in color_list: %}
+		    <tr>
+				<td></td>
+				<td style="background-color:#{{color[1]}}"></td>
+				<td></td>
+				<td>{{color[0]}}</td>
+				<td>{{color[1]}}</td>
+				<td>{{color[2]}}</td>
+			</tr>
+			{% endfor %}
+
+        </tbody>
+	</table>
+
+	<form action="/" method="post" enctype="multipart/form-data">
+		<fieldset class="information">
+		<div>
+		<label for="imgFile">File to upload: <input type="file" name="imgFile" id="imgFile" class="form-control"></label>
+		</div>
+		<div>
+		<label for="num_results">Number of colors:</label>
+			<input type="text" name="num_results" id="num_results" value="10" class="form-control" width="20px">
+		</div>
+		<div class="radio">
+         <div class="form-group row">
+		</div>
+		</div>
+		<div class="radio">
+         <div class="form-group row">
+		</div>
+		</div>
+		</fieldset>
+		<div class="buttons">
+			<input type="submit" name="submit" value="Submit">
+
+		</div>
+	</form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br><br>
+
+{% endblock %}
